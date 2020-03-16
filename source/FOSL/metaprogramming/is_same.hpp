@@ -6,8 +6,17 @@
 
 namespace FOSL::metaprogramming
 {
-	template <typename type1, typename type2> struct is_same             : false_type { };
-	template <typename type                 > struct is_same<type, type> :  true_type { };
+	namespace internal
+	{
+		template <typename type1, typename type2> struct is_same             : false_type { };
+		template <typename type                 > struct is_same<type, type> :  true_type { };
+	}
+
+	template <typename type1, typename type2>
+	constexpr bool is_same(void)
+	{
+		return internal::is_same<type1, type2>::value;
+	}
 }
 
 #endif

@@ -6,8 +6,17 @@
 
 namespace FOSL::metaprogramming
 {
-	template <typename type> struct is_true            : false_type { };
-	template <             > struct is_true<true_type> :  true_type { };
+	namespace internal
+	{
+		template <typename type> struct is_true            : false_type { };
+		template <             > struct is_true<true_type> :  true_type { };
+	}
+
+	template <typename type>
+	constexpr auto is_true(void)
+	{
+		return internal::is_true<type>::value;
+	}
 }
 
 #endif
