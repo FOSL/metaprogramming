@@ -3,7 +3,11 @@
 
 namespace FOSL::metaprogramming
 {
-	struct false_type { static constexpr bool value = false; };
+	struct false_type
+	{
+		static constexpr bool value = false;
+		using type = false_type;
+	};
 }
 
 #endif

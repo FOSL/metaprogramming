@@ -10,7 +10,10 @@ add_library(
 
 	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/true_type.hpp
 	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/false_type.hpp
+	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/is_true.hpp
+	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/is_false.hpp
 	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/enable_if.hpp
+	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/disable_if.hpp
 )
 
 target_include_directories(
@@ -24,4 +27,5 @@ target_link_libraries(
 )
 
 add_subdirectory(test)
-add_test(NAME enable_if COMMAND enable_if.elf)
+add_test(NAME conditional_enabling COMMAND conditional_enabling.elf)
+add_test(NAME    type_conditionals COMMAND    type_conditionals.elf)

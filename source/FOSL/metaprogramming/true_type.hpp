@@ -3,7 +3,11 @@
 
 namespace FOSL::metaprogramming
 {
-	struct true_type { static constexpr bool value = true; };
+	struct true_type
+	{
+		static constexpr bool value = true;
+		using type = true_type;
+	};
 }
 
 #endif

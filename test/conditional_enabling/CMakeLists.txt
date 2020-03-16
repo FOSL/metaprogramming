@@ -1,4 +1,4 @@
-project(enable_if)
+project(conditional_enabling)
 
 set(PROJECT_SOURCE_DIR "${PROJECT_SOURCE_DIR}/source")
 
