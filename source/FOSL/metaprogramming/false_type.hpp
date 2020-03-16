@@ -1,11 +1,9 @@
-#ifndef _FOSL_METAPROGRAMMING_TRUE_TYPE_HPP_
-#define _FOSL_METAPROGRAMMING_TRUE_TYPE_HPP_
+#ifndef _FOSL_METAPROGRAMMING_FALSE_TYPE_HPP_
+#define _FOSL_METAPROGRAMMING_FALSE_TYPE_HPP_
 
 namespace FOSL::metaprogramming
 {
-	struct true_type
-	{
-	};
+	struct false_type { static constexpr bool value = false; };
 }
 
 #endif
