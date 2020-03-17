@@ -1,21 +1,14 @@
 #ifndef _FOSL_METAPROGRAMMING_IS_FALSE_HPP_
 #define _FOSL_METAPROGRAMMING_IS_FALSE_HPP_
 
-#include "FOSL/metaprogramming/true_type.hpp"
-#include "FOSL/metaprogramming/false_type.hpp"
+#include "FOSL/metaprogramming/is_true.hpp"
 
 namespace FOSL::metaprogramming
 {
-	namespace internal
-	{
-		template <typename type> struct is_false             : false_type { };
-		template <             > struct is_false<false_type> :  true_type { };
-	}
-
 	template <typename type>
-	constexpr auto is_false(void)
+	constexpr bool is_false(void)
 	{
-		return internal::is_false<type>::value;
+		return not type::value;
 	}
 }
 
