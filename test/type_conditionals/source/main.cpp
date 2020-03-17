@@ -56,13 +56,28 @@ int main(void)
 		struct B     { };
 		struct D : B { };
 
-		// static_assert(    is_base_of<B, B>());
-		// static_assert(    is_base_of<B, D>());
-		// static_assert(not is_base_of<D, B>());
-		// static_assert(    is_base_of<D, D>());
+		static_assert(    is_base_of<B, B>());
+		static_assert(    is_base_of<B, D>());
+		static_assert(not is_base_of<D, B>());
+		static_assert(    is_base_of<D, D>());
 
-		// static_assert(not is_base_of<T, B>());
-		// static_assert(not is_base_of<T, D>());
+		static_assert(    is_base_of<      B,       B>());
+		static_assert(    is_base_of<      B, const D>());
+		static_assert(not is_base_of<const D,       B>());
+		static_assert(    is_base_of<const D, const D>());
+
+		static_assert(    is_base_of<         B,          B>());
+		static_assert(    is_base_of<         B, volatile D>());
+		static_assert(not is_base_of<volatile D,          B>());
+		static_assert(    is_base_of<volatile D, volatile D>());
+
+		static_assert(    is_base_of<               B,                B>());
+		static_assert(    is_base_of<               B, const volatile D>());
+		static_assert(not is_base_of<const volatile D,                B>());
+		static_assert(    is_base_of<const volatile D, const volatile D>());
+
+		static_assert(not is_base_of<T, B>());
+		static_assert(not is_base_of<T, D>());
 	}
 
 	return 0;

@@ -3,23 +3,16 @@
 
 #include "FOSL/metaprogramming/true_type.hpp"
 #include "FOSL/metaprogramming/false_type.hpp"
-#include "FOSL/metaprogramming/is_same.hpp"
+#include "FOSL/metaprogramming/remove_const_volatile.hpp"
+#include "FOSL/metaprogramming/is_pointer_convertible.hpp"
 
 namespace FOSL::metaprogramming
 {
-	namespace internal
-	{
-		template <typename type1, typename type2>
-		struct is_base_of : false_type { };
-
-		template <typename type>
-		struct is_base_of<type, type> : true_type { };
-	}
-
-	template <typename type1, typename type2>
+	template <typename base, typename derived>
 	constexpr bool is_base_of(void)
 	{
-		return internal::is_base_of<type1, type2>::value;
+		return is_pointer_convertible< remove_const_volatile<derived>
+		                             , remove_const_volatile<base   > >();
 	}
 }
 
