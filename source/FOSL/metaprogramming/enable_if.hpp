@@ -11,7 +11,7 @@ namespace FOSL::metaprogramming
 		template <>
 		struct enable_if<true>
 		{
-			using type = int;
+			using type = bool;
 		};
 	}
 
