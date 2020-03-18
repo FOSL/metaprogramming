@@ -3,11 +3,8 @@
 
 namespace FOSL::metaprogramming
 {
-	template <typename type>
-	constexpr bool is_true(void)
-	{
-		return type::value;
-	}
+	template <typename type> constexpr bool
+	is_true = type::value;
 }
 
 #endif

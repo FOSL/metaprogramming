@@ -8,16 +8,13 @@ namespace FOSL::metaprogramming
 {
 	namespace internal
 	{
-		template <typename to>  true_type is_pointer_convertible(         to         *);
-		template <typename   > false_type is_pointer_convertible(volatile void const *);
+		template <typename to>  true_type is_pointer_convertible(               to   *);
+		template <typename   > false_type is_pointer_convertible(const volatile void *);
 	}
 
-	template <typename from, typename to>
-	constexpr bool is_pointer_convertible(void)
-	{
-		return decltype( internal::is_pointer_convertible<to>(static_cast<from *>(nullptr))
-		               )::value;
-	}
+	template <typename from, typename to> constexpr bool
+	is_pointer_convertible = decltype(internal::is_pointer_convertible<to>(static_cast<from *>(nullptr))
+	                                 )::value;
 }
 
 #endif

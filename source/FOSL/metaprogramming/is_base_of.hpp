@@ -8,12 +8,9 @@
 
 namespace FOSL::metaprogramming
 {
-	template <typename base, typename derived>
-	constexpr bool is_base_of(void)
-	{
-		return is_pointer_convertible< remove_const_volatile<derived>
-		                             , remove_const_volatile<base   > >();
-	}
+	template <typename base, typename derived> constexpr bool
+	is_base_of = is_pointer_convertible< remove_const_volatile<derived>
+		                               , remove_const_volatile<base   > >;
 }
 
 #endif

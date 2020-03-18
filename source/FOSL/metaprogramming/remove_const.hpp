@@ -5,17 +5,12 @@ namespace FOSL::metaprogramming
 {
 	namespace internal
 	{
-		template <typename _type>
-		struct remove_const
-		{ using type = _type; };
-
-		template <typename _type>
-		struct remove_const<const _type>
-		{ using type = _type; };
+		template <typename input_type> struct remove_const                   { using type = input_type; };
+		template <typename input_type> struct remove_const<const input_type> { using type = input_type; };
 	}
 
-	template <typename type>
-	using remove_const = typename internal::remove_const<type>::type;
+	template <typename input_type> using
+	remove_const = typename internal::remove_const<input_type>::type;
 }
 
 #endif

@@ -10,6 +10,7 @@ add_library(
 
 	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/true_type.hpp
 	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/false_type.hpp
+	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/not_true_type.hpp
 	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/is_true.hpp
 	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/is_false.hpp
 	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/is_same.hpp

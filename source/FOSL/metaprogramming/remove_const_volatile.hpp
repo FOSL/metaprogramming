@@ -5,25 +5,14 @@ namespace FOSL::metaprogramming
 {
 	namespace internal
 	{
-		template <typename _type>
-		struct remove_const_volatile
-		{ using type = _type; };
-
-		template <typename _type>
-		struct remove_const_volatile<const _type>
-		{ using type = _type; };
-
-		template <typename _type>
-		struct remove_const_volatile<volatile _type>
-		{ using type = _type; };
-
-		template <typename _type>
-		struct remove_const_volatile<const volatile _type>
-		{ using type = _type; };
+		template <typename input_type> struct remove_const_volatile                            { using type = input_type; };
+		template <typename input_type> struct remove_const_volatile<const          input_type> { using type = input_type; };
+		template <typename input_type> struct remove_const_volatile<      volatile input_type> { using type = input_type; };
+		template <typename input_type> struct remove_const_volatile<const volatile input_type> { using type = input_type; };
 	}
 
-	template <typename type>
-	using remove_const_volatile = typename internal::remove_const_volatile<type>::type;
+	template <typename input_type> using
+	remove_const_volatile = typename internal::remove_const_volatile<input_type>::type;
 }
 
 #endif

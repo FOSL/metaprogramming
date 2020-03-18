@@ -5,8 +5,8 @@
 
 namespace FOSL::metaprogramming
 {
-	template <bool conditional>
-	using disable_if = enable_if<!conditional>;
+	template <bool condition> using
+	disable_if = enable_if<!condition>;
 }
 
 #endif
