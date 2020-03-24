@@ -4,6 +4,7 @@
 #include <FOSL/metaprogramming/is_false.hpp>
 #include <FOSL/metaprogramming/is_pointer_convertible.hpp>
 #include <FOSL/metaprogramming/is_same.hpp>
+#include <FOSL/metaprogramming/is_not_same.hpp>
 #include <FOSL/metaprogramming/is_base_of.hpp>
 
 int main(void)
@@ -24,6 +25,11 @@ int main(void)
 		static_assert(not is_same<O, I>);
 		static_assert(not is_same<I, O>);
 		static_assert(    is_same<I, I>);
+
+		static_assert(not is_not_same<O, O>);
+		static_assert(    is_not_same<O, I>);
+		static_assert(    is_not_same<I, O>);
+		static_assert(not is_not_same<I, I>);
 	}
 	{
 		struct T     { };

@@ -8,14 +8,23 @@ add_library(
 	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming.cpp
 	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming.hpp
 
-	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/true_type.hpp
-	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/false_type.hpp
+	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/////true_type.hpp
 	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/not_true_type.hpp
+	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/////false_type.hpp
+	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/not_false_type.hpp
+
 	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/is_true.hpp
+	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/is_not_true.hpp
 	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/is_false.hpp
+	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/is_not_false.hpp
 	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/is_same.hpp
+	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/is_not_same.hpp
 	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/is_base_of.hpp
+	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/is_not_base_of.hpp
 	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/is_pointer_convertible.hpp
+	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/is_not_pointer_convertible.hpp
+	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/is_trivial.hpp
+	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/is_not_trivial.hpp
 
 	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/enable_if.hpp
 	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/disable_if.hpp
@@ -23,6 +32,12 @@ add_library(
 	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/remove_const.hpp
 	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/remove_volatile.hpp
 	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/remove_const_volatile.hpp
+
+	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/require.hpp
+
+	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/add_rvalue_reference.hpp
+
+	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/declval.hpp
 )
 
 target_include_directories(

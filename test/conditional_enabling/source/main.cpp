@@ -27,7 +27,7 @@ int main(void)
 	static_assert(dummy::disable_function_if<not_true_type>() ==     true);
 	static_assert(dummy::disable_function_if<    true_type>() == not true);
 
-	// yet not sure how to test commented use cases
+// 	yet not sure how to test commented use cases
 	static_assert(dummy:: enable_type_if<    true_type>::value ==     true);
 //	static_assert(dummy:: enable_type_if<not_true_type>::value == not true);
 	static_assert(dummy::disable_type_if<not_true_type>::value ==     true);
