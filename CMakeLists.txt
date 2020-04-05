@@ -1,51 +1,62 @@
-project(FOSL-metaprogramming CXX)
+# Simplification {{{
+	set(CMAKE_MODULE_PATH
+		"${CMAKE_MODULE_PATH}"
+		"${CMAKE_CURRENT_SOURCE_DIR}/cmake/module/CMake_deployment/source")
+	include(SimpleFOSLProject)
+# }}}
 
-set(PROJECT_SOURCE_DIR "${PROJECT_SOURCE_DIR}/source")
+project(metaprogramming # {{{
+	VERSION 0.1.0.0
+	LANGUAGES CXX
+) # }}}
 
-add_library(
-	${PROJECT_NAME}
+add_library(metaprogramming)
+target_sources(metaprogramming # {{{
+	PRIVATE
+		metaprogramming.cpp
+	PUBLIC
+		metaprogramming.hpp
 
-	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming.cpp
-	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming.hpp
+		metaprogramming/////true_type.hpp
+		metaprogramming/not_true_type.hpp
+		metaprogramming/////false_type.hpp
+		metaprogramming/not_false_type.hpp
 
-	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/////true_type.hpp
-	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/not_true_type.hpp
-	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/////false_type.hpp
-	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/not_false_type.hpp
+		metaprogramming/is_true.hpp
+		metaprogramming/is_false.hpp
+		metaprogramming/is_same.hpp
+		metaprogramming/is_base_of.hpp
+		metaprogramming/is_pointer_convertible.hpp
+		metaprogramming/is_trivial.hpp
+		metaprogramming/is_derivable.hpp
 
-	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/is_true.hpp
-	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/is_false.hpp
-	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/is_same.hpp
-	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/is_base_of.hpp
-	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/is_pointer_convertible.hpp
-	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/is_trivial.hpp
-	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/is_derivable.hpp
+		metaprogramming/enable_if.hpp
+		metaprogramming/disable_if.hpp
 
-	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/enable_if.hpp
-	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/disable_if.hpp
+		metaprogramming/remove_const.hpp
+		metaprogramming/remove_volatile.hpp
+		metaprogramming/remove_const_volatile.hpp
 
-	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/remove_const.hpp
-	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/remove_volatile.hpp
-	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/remove_const_volatile.hpp
+		metaprogramming/require.hpp
 
-	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/require.hpp
+		metaprogramming/add_rvalue_reference.hpp
 
-	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/add_rvalue_reference.hpp
+		metaprogramming/declval.hpp
+		metaprogramming/void_type.hpp
+) # }}}
+target_include_directories(metaprogramming # {{{
+) # }}}
+target_link_libraries(metaprogramming # {{{
+) # }}}
 
-	${PROJECT_SOURCE_DIR}/FOSL/metaprogramming/declval.hpp
-)
-
-target_include_directories(
-	${PROJECT_NAME} PUBLIC
-
-	${PROJECT_SOURCE_DIR}
-)
-
-target_link_libraries(
-	${PROJECT_NAME}
-)
-
-add_subdirectory(test)
-add_test(NAME conditional_enabling     COMMAND conditional_enabling.elf    )
-add_test(NAME type_conditionals        COMMAND type_conditionals.elf       )
-add_test(NAME removing_type_qualifiers COMMAND removing_type_qualifiers.elf)
+# Testing {{{
+if(${UPPERCASE_PROJECT_NAMESPACE}_${UPPERCASE_PROJECT_COMPONENT}_BUILD_TESTS)
+	add_test(NAME conditional_enabling     COMMAND ${PROJECT_BINARY_DIR}/test/unit/conditional_enabling/main.elf    )
+	add_test(NAME type_conditionals        COMMAND ${PROJECT_BINARY_DIR}/test/unit/type_conditionals/main.elf       )
+	add_test(NAME removing_type_qualifiers COMMAND ${PROJECT_BINARY_DIR}/test/unit/removing_type_qualifiers/main.elf)
+	add_subdirectory(test)
+endif() # }}}
+# Installation {{{
+if(FOSL_UTILITY_INSTALL)
+	install_project()
+endif() # }}}

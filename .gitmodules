@@ -1,3 +1,6 @@
 [submodule "example/library/FOSL/utility"]
 	path = example/library/FOSL/utility
 	url = https://github.com/FOSL/utility.git
+[submodule "cmake/module/CMake_deployment"]
+	path = cmake/module/CMake_deployment
+	url = https://github.com/FOSL/CMake_deployment.git

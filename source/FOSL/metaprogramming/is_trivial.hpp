@@ -7,6 +7,9 @@ namespace FOSL::metaprogramming
 {
 	template <typename type> constexpr bool
 	is_trivial = std::is_trivial<type>::value;
+
+	template <typename type>
+	concept trivial = is_trivial<type>;
 }
 
 #endif

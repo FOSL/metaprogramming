@@ -27,6 +27,7 @@
 #include "FOSL/metaprogramming/add_rvalue_reference.hpp"
 
 #include "FOSL/metaprogramming/declval.hpp"
+#include "FOSL/metaprogramming/void_type.hpp"
 
 namespace FOSL::metaprogramming
 {
